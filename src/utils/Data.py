@@ -1,5 +1,5 @@
 from os import path
-from Error import ErrorUtils
+from .Error import ErrorUtils
 import csv
 
 
