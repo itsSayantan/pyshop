@@ -1,25 +1,23 @@
 from os import path
+
 from .Error import ErrorUtils
+
+from ..state.State import State
+
 import csv
 
 
 class DataUtils:
-    file_path_dict = {
-        'users': {
-            'file_path': './data/users.csv',
-            'template_file_path': './data/users.template.csv'
-        }
-    }
 
-    @classmethod
-    def create_dataset(cls, dataset_name_list):
+    def create_dataset(dataset_name_list):
+        file_path_dict = State.get('file_path_dict')
         for dataset_name in dataset_name_list:
-            if (cls.file_path_dict.get(dataset_name) == None):
+            if (file_path_dict.get(dataset_name) == None):
                 # invalid dataset name
                 return ErrorUtils('INVALID_DATASET_NAME', 'Invalid dataset name: {}'.format(dataset_name))
             else:
                 # valid dataset name, proceed with the file operations
-                fpd_entry = cls.file_path_dict.get(dataset_name)
+                fpd_entry = file_path_dict.get(dataset_name)
                 with open(fpd_entry.get('template_file_path'), newline='') as csvfile:
                     reader = csv.reader(
                         csvfile, delimiter='|')

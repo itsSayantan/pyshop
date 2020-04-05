@@ -8,7 +8,14 @@ class State:
         The __state value should not be accessed directly,
         instead the get() method should be used.
     """
-    __state = {}
+    __state = {
+        'file_path_dict': {
+            'users': {
+                'file_path': './data/users.csv',
+                'template_file_path': './data/users.template.csv'
+            }
+        }
+    }
 
     @classmethod
     def set_state(cls, part_of_the_state_to_be_updated):
