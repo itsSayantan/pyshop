@@ -11,3 +11,4 @@ class CommonUtils:
             # mac and linux
             system('clear')
         print('+++++ WELCOME TO PYSHOP +++++')
+        print('Type "exit" and press ENTER to exit')
