@@ -1,12 +1,17 @@
 from src.state.State import State
-from src.utils.common import CommonUtils
-from src.utils.data import DataOperations
+from src.utils.Common import CommonUtils
+from src.utils.Data import DataUtils
+from src.utils.Error import ErrorUtils
 
 
 class Main:
     def initialize_application():
         # try to create the data files
-        DataOperations.create_user_dataset()
+        response = DataUtils.create_dataset(['users'])
+
+        if isinstance(response, ErrorUtils) == True:
+            print(response.get_error())
+
         # initiate the login flow
 
 
