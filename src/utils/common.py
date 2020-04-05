@@ -10,5 +10,5 @@ class CommonUtils:
         else:
             # mac and linux
             system('clear')
-        print('+++++ WELCOME TO PYSHOP +++++')
-        print('Type "exit" and press ENTER to exit')
+        print('+++++ WELCOME TO PyShop +++++')
+        print('Enter command help to get list of avaible commands and exit to exit the application.')
