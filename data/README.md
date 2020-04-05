@@ -1,0 +1,1 @@
+Contains all the data to be stored by the application.

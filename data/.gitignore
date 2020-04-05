@@ -1,0 +1,5 @@
+# ignore everything other than the .gitignore, readme and the template csv files.
+*
+!.gitignore
+!README.md
+!*.template.csv
