@@ -17,20 +17,19 @@ class LoginService:
             # users.csv exists, read the file
 
             with open(upd.get('file_path'), newline='') as userscsvfile:
+                # skip the first line as it contains the csv headers
+                next(userscsvfile)
+
                 reader = csv.reader(userscsvfile, delimiter='|')
 
                 for row in reader:
-                    if row[0] == 'id':
-                        # first row, skip
-                        continue
+                    # check of the value in the username column of this row matches the given username
+                    if row[1] == username:
+                        # match, return
+                        return
                     else:
-                        # check of the value in the username column of this row matches the given username
-                        if row[1] == username:
-                            # match, return
-                            return
-                        else:
-                            # no match, keep on searcing
-                            continue
+                        # no match, keep on searcing
+                        continue
 
                 # no match
                 return ErrorUtils('USERNAME_NOT_FOUND', 'Username was not found in the data store.')
