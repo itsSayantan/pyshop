@@ -2,7 +2,6 @@
     This class is responsible to store the entire state of the PyShop application.
 """
 
-
 class State:
     """
         The __state value should not be accessed directly,
@@ -12,8 +11,12 @@ class State:
         'file_path_dict': {
             'users': {
                 'file_path': './data/users.csv',
-                'template_file_path': './data/users.template.csv'
-            }
+                'template_file_path': './data/users.template.csv',
+            },
+            'products': {
+                'file_path': './data/products.csv',
+                'template_file_path': './data/products.template.csv',
+            },
         }
     }
 

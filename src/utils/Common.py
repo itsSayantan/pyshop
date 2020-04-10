@@ -2,7 +2,8 @@ from os import system, name
 
 
 class CommonUtils:
-    def greet_user(self):
+    @classmethod
+    def clear_screen(cls):
         # clear the screen
         if name == 'nt':
             # windows
@@ -10,5 +11,9 @@ class CommonUtils:
         else:
             # mac and linux
             system('clear')
-        print('+++++ Welcome to PyShop +++++')
-        print('Enter command help to get list of avaible commands and exit to exit the application.')
+
+    @classmethod
+    def greet_user(cls):
+        cls.clear_screen()
+        print('+++++ Welcome to PyShop +++++\n')
+        print('Enter command \'help\' to get list of avaible commands and \'exit\' to exit the application.')

@@ -1,3 +1,4 @@
+import sys
 from os import path
 
 from .Error import ErrorUtils
@@ -43,3 +44,24 @@ class DataUtils:
                                         csvfileforwriting, delimiter='|', quotechar='|')
                                     firstrow = [row]
                                     csvwriter.writerows(firstrow)
+
+    def populate_dummy_data():
+        # check if the products.csv file exists, and then populate some dummy data
+        file_path_dict = State.get('file_path_dict')
+        fpd_entry = file_path_dict.get('products')
+        
+        if path.exists(fpd_entry.get('file_path')) == True:
+            # products.csv exists
+            with open(fpd_entry.get('file_path'), 'w', newline='') as csvfileforwriting:
+                csvwriter = csv.writer(csvfileforwriting, delimiter='|', quotechar='|')
+                
+                # currently it is being considered that the product names are unique in a case sensitive way
+                # and the product names cannot have a space in between them as the command parsing logic
+                # is naive and only based on string splitting based on spaces
+
+                rows = [['id', 'name', 'category', 'price', 'discount', 'currency'], [1,'halo', 'ea sports', 'games', '10', '0', 'USD'], [2,'iphoneX', 'Apple', 'Mobile Phone', '1000', '10', 'USD'], [3, 'Rice', 'Ashirwad', 'Grocery', '50', '2', 'INR']]
+
+                csvwriter.writerows(rows)
+        else:
+            # products.csv does not exist
+            sys.exit()

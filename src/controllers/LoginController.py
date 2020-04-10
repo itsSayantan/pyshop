@@ -11,6 +11,10 @@ class LoginController:
         # take username input
         username = input('Enter username: ')
 
+        # validate username input
+        if len(username.strip()) == 0:
+            return ErrorUtils('INVALID_USERNAME_INPUT', 'Please enter a valid username,')
+
         # verify whether username exists in the users dataset
 
         response = LoginService.verify_username(username)
